@@ -5,3 +5,6 @@ alias ubuntuUpdate='sudo apt update && sudo apt upgrade'
 alias .='cd ..'
 alias ..='cd ../..'
 alias ...='cd ../../..'
+
+# gitpush shortcut
+alias push='./.gitACP'
