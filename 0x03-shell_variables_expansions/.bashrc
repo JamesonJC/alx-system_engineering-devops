@@ -1,5 +1,5 @@
 #!/bin/bash
-# My first ALIASE, SHORT UBUNTU UPDATE COMMAND #
+# My first ALIASE, SHORTCUT UBUNTU UPDATE COMMAND #
 alias ubuntuUpdate='sudo apt update && sudo apt upgrade'
 # cd backwards 
 alias .='cd ..'
@@ -7,4 +7,4 @@ alias ..='cd ../..'
 alias ...='cd ../../..'
 
 # gitpush shortcut
-alias push='cd ../.. && cd alx-system_engineering-devops/0x03-shell_variables_expansions && ./.gitACP'
+alias push='echo "Enter the commit message" && read commitMessage && git add . && git commit -m commitMessage && git push'
