@@ -7,4 +7,4 @@ alias ..='cd ../..'
 alias ...='cd ../../..'
 
 # gitpush shortcut
-alias push='./.gitACP'
+alias push='cd ../.. && cd alx-system_engineering-devops/0x03-shell_variables_expansions && ./.gitACP'
