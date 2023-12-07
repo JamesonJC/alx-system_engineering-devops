@@ -11,14 +11,15 @@ apt-get -y install haproxy
 # edit config file
 server_config=\
 "
-frontend  besthor_frontend
+frontend JamesonP_frontend
         bind *:80
         mode http
         default_backend Jameson_backend
-backend besthor_backend
+
+backend Jameson_backend
         balance roundrobin
-        server 176572-web-01 100.24.238.96 check
-        server 176572-web-02 100.25.212.129 check
+        server 247056-web-01 100.24.238.96 check
+        server 247056-web-02 100.25.212.129 check
 "
 echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
 
