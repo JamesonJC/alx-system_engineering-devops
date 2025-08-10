@@ -1,0 +1,40 @@
+                     +---------------------+
+User --> HTTPS -->  |  HAProxy Load Balancer |
+                     +---------------------+
+                           |
+                 +---------------------+
+                 |       Firewall       |
+                 +---------------------+
+                    |            |
+          +-------------+   +-------------+
+          | Web/App #1  |   | Web/App #2  |
+          +-------------+   +-------------+
+                |                |
+          +-----------------------------+
+          |         MySQL Primary       |
+          +-----------------------------+
+
+MONITORING:
+- Each server has monitoring agent (e.g., SumoLogic)
+- Sends logs/metrics to monitoring system
+
+
+# Key Additions:
+- Firewalls: Protect from unauthorized access.
+
+- HTTPS (SSL): Encrypt traffic from user to load balancer.
+
+- Monitoring Clients: Collect logs, metrics, alerts.
+
+- Monitoring Tool: E.g., SumoLogic, Datadog, Prometheus.
+
+# Extra Concepts:
+- QPS (Queries per Second): Can be monitored by logging NGINX requests or database queries.
+
+- Why SSL at Load Balancer is a concern?:
+
+- SSL termination here means internal traffic isn’t encrypted unless re-encrypted.
+
+- Single MySQL for writes: Still a bottleneck and SPOF.
+
+- Same components on all servers: Harder to scale/manage — separation of roles is better.

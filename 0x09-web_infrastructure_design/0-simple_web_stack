@@ -1,0 +1,37 @@
+User --> www.foobar.com (DNS) --> 8.8.8.8 (server)
+                         |
+                  +-----------------+
+                  |     NGINX       |  <-- Web server
+                  +-----------------+
+                           |
+                  +-----------------+
+                  | App Server (PHP)|  <-- Application server (could also be Node.js, Python, etc.)
+                  +-----------------+
+                           |
+                  +-----------------+
+                  | MySQL Database  |
+                  +-----------------+
+
+# Key Explanations:
+- Server: A physical or virtual machine that hosts components of the web application.
+
+- Domain Name: foobar.com is a human-readable address mapped to an IP (8.8.8.8).
+
+- DNS Record: The www is a subdomain and a CNAME or A record.
+
+- Web Server (Nginx): Accepts HTTP requests and forwards to the app server.
+
+- Application Server: Runs your business logic (PHP, Node.js, Python, etc.).
+
+- Application Files: Your actual codebase served by the app server.
+
+- Database (MySQL): Stores user and app data.
+
+- Communication Protocol: Typically HTTP over TCP/IP.
+
+# Issues:
+- SPOF (Single Point of Failure): One server — if it dies, the entire app dies.
+
+- Downtime during Maintenance: Updating code or restarting server causes downtime.
+
+- No Scalability: Can't handle increased traffic alone.

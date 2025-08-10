@@ -1,0 +1,30 @@
+User --> HTTPS --> Load Balancer Cluster (2 HAProxies)
+                        |
+        +-----------------------------------+
+        |                                   |
+  +------------+                     +------------+
+  |  Web Server|                     |  Web Server|
+  +------------+                     +------------+
+
+        |                                   |
+  +------------+                     +------------+
+  | App Server |                     | App Server |
+  +------------+                     +------------+
+
+        \                                   /
+           +--------------------------+
+           |      MySQL Cluster       |
+           +--------------------------+
+
+# Key Explanations:
+- Clustered Load Balancers: Prevent LB SPOF using techniques like VRRP (keepalived).
+
+- Separation of Components:
+
+- One server for web
+
+- One for app
+
+- One for DB
+
+- Why?: Better fault isolation, more efficient scaling, easier monitoring and deployment.

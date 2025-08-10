@@ -1,0 +1,38 @@
+             +------------------+
+User --> www.foobar.com (DNS) --> Load Balancer (HAProxy)
+             +------------------+
+               |             |
+         +------------+   +------------+
+         |  Web/App   |   |  Web/App   |   <-- Nginx + App Server
+         +------------+   +------------+
+                 \         /
+                  \       /
+               +-------------+
+               |   MySQL DB   |
+               +-------------+
+
+# Key Explanations:
+- Why extra servers? For redundancy, load balancing, and separation of concerns.
+
+- Load Balancer (HAProxy): Distributes traffic across app servers.
+
+- Load-Balancing Algorithm: e.g., Round Robin or Least Connections.
+
+- Active-Active vs Active-Passive:
+
+- Active-Active: All servers process traffic simultaneously.
+
+- Active-Passive: One handles traffic, others wait as backups.
+
+- Primary-Replica DB:
+
+- Primary: Handles writes.
+
+- Replica(s): Sync from primary, used for read operations.
+
+# Issues:
+- SPOF: The load balancer or DB is still a SPOF unless clustered.
+
+- Security: No firewalls or HTTPS.
+
+- No Monitoring: No visibility into performance or failures.
